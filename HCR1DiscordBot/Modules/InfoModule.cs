@@ -34,5 +34,41 @@ namespace HCR1DiscordBot.Modules
                 $"For example: *hcrinfo {item.Name.ToLower()}"
             );
         }
+
+        [Command("hcrinfo")]
+        public async Task InfoAsync([Remainder] string parameter)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+
+            StringBuilder sb = new StringBuilder();
+
+            var vehicles = _jsonReader.ReadAllVehicles();
+            dynamic item = vehicles.FirstOrDefault(x => x.Name.ToLower() == parameter.ToLower());
+            if (item != null)
+            {
+                sb.AppendLine($"{item.Emoji} **{item.Name}**");
+                sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
+                sb.AppendLine($"Upgrade cost: {item.UpgradeCost:n0}");
+                sb.AppendLine($"Total cost (Purchase + Upgrade): {(item.PurchaseCost + item.UpgradeCost):n0}");
+                sb.AppendLine($"Fuel Duration: {item.FuelDuration}s");
+            }
+            else
+            {
+                var stages = _jsonReader.ReadAllStages();
+                item = stages.FirstOrDefault(x => x.Name.ToLower() == parameter.ToLower());
+                if (item != null)
+                {
+                    sb.AppendLine($"**{item.Name}**");
+                    sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
+                    sb.AppendLine($"Fuel locations: coming soon...");
+                }
+                else
+                {
+                    sb.AppendLine("Couldn't find such vehicle or stage");
+                }
+            }
+
+            await Context.Channel.SendMessageAsync(sb.ToString());
+        }
     }
 }
