@@ -23,7 +23,7 @@ namespace HCR1DiscordBot.Services
             return vehicles.ToArray();
         }
 
-        public Stage[] ReadAllStages()
+        public Stage[] ReadAllStages(bool excludeMissions = false)
         {
             var serializer = new JsonSerializer();
             List<Stage> stages = new List<Stage>();
@@ -31,6 +31,12 @@ namespace HCR1DiscordBot.Services
             using (var textReader = new JsonTextReader(streamReader))
             {
                 stages = serializer.Deserialize<List<Stage>>(textReader);
+            }
+            if (excludeMissions)
+            {
+                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "suburbs"));
+                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "retro mission"));
+                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "space mission"));
             }
             return stages.ToArray();
         }
