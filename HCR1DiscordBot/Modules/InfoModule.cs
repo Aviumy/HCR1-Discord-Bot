@@ -50,7 +50,7 @@ namespace HCR1DiscordBot.Modules
                 sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
                 sb.AppendLine($"Upgrade cost: {item.UpgradeCost:n0}");
                 sb.AppendLine($"Total cost (Purchase + Upgrade): {(item.PurchaseCost + item.UpgradeCost):n0}");
-                sb.AppendLine($"Fuel Duration: {item.FuelDuration}s");
+                sb.AppendLine($"Fuel Duration: {item.FuelDuration}");
             }
             else
             {
