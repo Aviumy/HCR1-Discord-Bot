@@ -14,7 +14,7 @@ namespace HCR1DiscordBot.Modules
         public async Task GenerateComboAsync()
         {
             var vehicles = _jsonReader.ReadAllVehicles();
-            var stages = _jsonReader.ReadAllStages();
+            var stages = _jsonReader.ReadAllStages(excludeMissions: true);
             await Context.Channel.SendMessageAsync(
                 $"Try to drive with {vehicles[_rand.Next(vehicles.Length)].Name} on {stages[_rand.Next(stages.Length)].Name}!"
             );
