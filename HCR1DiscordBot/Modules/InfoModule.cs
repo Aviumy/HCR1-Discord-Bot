@@ -13,6 +13,7 @@ namespace HCR1DiscordBot.Modules
     {
         private Random _rand = new Random();
         private JsonReaderService _jsonReader = new JsonReaderService();
+        private InfoSearchService _searchService = new InfoSearchService();
 
         [Command("hcrinfo")]
         public async Task InfoHelpAsync()
@@ -43,7 +44,7 @@ namespace HCR1DiscordBot.Modules
             StringBuilder sb = new StringBuilder();
 
             var vehicles = _jsonReader.ReadAllVehicles();
-            dynamic item = vehicles.FirstOrDefault(x => x.Name.ToLower() == parameter.ToLower());
+            dynamic item = _searchService.FindIn(vehicles, parameter);
             if (item != null)
             {
                 sb.AppendLine($"{item.Emoji} **{item.Name}**");
@@ -55,7 +56,7 @@ namespace HCR1DiscordBot.Modules
             else
             {
                 var stages = _jsonReader.ReadAllStages();
-                item = stages.FirstOrDefault(x => x.Name.ToLower() == parameter.ToLower());
+                item = _searchService.FindIn(stages, parameter);
                 if (item != null)
                 {
                     sb.AppendLine($"**{item.Name}**");
