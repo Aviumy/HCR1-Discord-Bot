@@ -48,9 +48,18 @@ namespace HCR1DiscordBot.Modules
             if (item != null)
             {
                 sb.AppendLine($"{item.Emoji} **{item.Name}**");
-                sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
-                sb.AppendLine($"Upgrade cost: {item.UpgradeCost:n0}");
-                sb.AppendLine($"Total cost (Purchase + Upgrade): {(item.PurchaseCost + item.UpgradeCost):n0}");
+                if (item.Name.ToLower() == "garage")
+                {
+                    sb.AppendLine($"Purchase cost: 300 gems");
+                    sb.AppendLine($"Upgrade cost: Random");
+                    sb.AppendLine($"Total cost (Purchase + Upgrade): Random");
+                }
+                else
+                {
+                    sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
+                    sb.AppendLine($"Upgrade cost: {item.UpgradeCost:n0}");
+                    sb.AppendLine($"Total cost (Purchase + Upgrade): {(item.PurchaseCost + item.UpgradeCost):n0}");
+                }
                 sb.AppendLine($"Fuel Duration: {item.FuelDuration}");
             }
             else
