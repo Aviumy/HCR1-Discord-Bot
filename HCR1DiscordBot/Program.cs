@@ -73,7 +73,8 @@ namespace HCR1DiscordBot
 
             Console.WriteLine("-------------\nUser: " 
                 + message.Author.Username + " with ID  " + message.Author.Id 
-                + "\nWrote:\n" + message.ToString());
+                + "\nWrote:\n" + message.ToString() + "\nin channel "
+                + $"{message.Channel.Name} (id: {message.Channel.Id})");
 
             if (message.Author.IsBot)
                 return;
