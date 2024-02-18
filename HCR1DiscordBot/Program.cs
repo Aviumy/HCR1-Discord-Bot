@@ -71,9 +71,13 @@ namespace HCR1DiscordBot
             var context = new SocketCommandContext(_client, message);
             var channel = _client.GetChannel(_logChannelID) as SocketTextChannel;
 
+            string messageText = (message.Embeds.Count != 0)
+                ? string.Join("\n", message.Embeds.Select(e => e.Description))
+                : message.ToString();
+
             Console.WriteLine("-------------\nUser: " 
                 + message.Author.Username + " with ID  " + message.Author.Id 
-                + "\nWrote:\n" + message.ToString() + "\nin channel "
+                + "\nWrote:\n" + messageText + "\nin channel "
                 + $"{message.Channel.Name} (id: {message.Channel.Id})");
 
             if (message.Author.IsBot)
