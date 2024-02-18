@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using Discord.Commands;
 using HCR1DiscordBot.Services;
+using Discord;
 
 namespace HCR1DiscordBot.Modules
 {
@@ -78,7 +79,9 @@ namespace HCR1DiscordBot.Modules
                 }
             }
 
-            await Context.Channel.SendMessageAsync(sb.ToString());
+            var embed = new EmbedBuilder();
+            embed.Description = sb.ToString();
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }
 }
