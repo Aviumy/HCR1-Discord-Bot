@@ -8,7 +8,10 @@ namespace HCR1DiscordBot.Modules
     public class ComboModule : ModuleBase<SocketCommandContext>
     {
         private Random _rand = new Random();
-        private JsonReaderService _jsonReader = new JsonReaderService();
+        private JsonReaderService _jsonReader = new JsonReaderService(
+            vehiclesFilePath: "_vehicles.json",
+            stagesFilePath: "_stages.json"
+        );
 
         [Command("combo")]
         public async Task GenerateComboAsync()
