@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace HCR1DiscordBot.Services
 {
-    internal class JsonReaderService
+    public class JsonReaderService
     {
         public Vehicle[] ReadAllVehicles()
         {

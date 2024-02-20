@@ -8,7 +8,7 @@ using HCR1DiscordBot.Models;
 
 namespace HCR1DiscordBot.Services
 {
-    internal class InfoSearchService
+    public class InfoSearchService
     {
         private string _whitespacePattern = @"[\s\-\+_=\*~`|]+";
 

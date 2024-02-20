@@ -1,6 +1,6 @@
 ﻿namespace HCR1DiscordBot.Models
 {
-    internal class Vehicle
+    public class Vehicle
     {
         public string Name { get; set; }
         public string FuelDuration { get; set; }
