@@ -21,4 +21,8 @@
     <Folder Include="ServiceTests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HCR1DiscordBot\HCR1DiscordBot.csproj" />
+  </ItemGroup>
+
 </Project>
