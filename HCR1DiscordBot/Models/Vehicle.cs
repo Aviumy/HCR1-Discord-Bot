@@ -8,5 +8,15 @@
         public int? UpgradeCost { get; set; }
         public string Emoji { get; set; }
         public string[] Aliases { get; set; }
+
+        public Vehicle(string name, string fuelDuration, int? purchaseCost, int? upgradeCost, string emoji, string[] aliases)
+        {
+            Name = name;
+            FuelDuration = fuelDuration;
+            PurchaseCost = purchaseCost;
+            UpgradeCost = upgradeCost;
+            Emoji = emoji;
+            Aliases = aliases;
+        }
     }
 }
