@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Countryside",
+        "purchaseCost": 0,
+        "aliases": ["country", "contry", "contryside"]
+    },
+    {
+        "name": "Seasons",
+        "purchaseCost": 50000,
+        "aliases": ["season"]
+    },
+    {
+        "name": "Suburbs",
+        "purchaseCost": 1500000,
+        "aliases": []
+    },
+    {
+        "name": "Retro Mission",
+        "purchaseCost": 500000,
+        "aliases": ["retro", "retro mision"]
+    },
+    {
+        "name": "Space Mission",
+        "purchaseCost": 1500000,
+        "aliases": ["space", "space mision"]
+    }
+]

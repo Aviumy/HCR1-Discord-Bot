@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Countryside",
+        "purchaseCost": 0
+    },
+    {
+        "purchaseCost": 50000,
+        "aliases": ["season"]
+    },
+    {
+        "name": "Suburbs"
+    },
+    {
+
+    }
+]

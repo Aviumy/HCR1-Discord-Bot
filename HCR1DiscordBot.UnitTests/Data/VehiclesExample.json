@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Hill Climber",
+        "fuelDuration": "40s",
+        "purchaseCost": 0,
+        "upgradeCost": 3711000,
+        "emoji": ":hill_climber:",
+        "aliases": ["jeep", "hc"]
+    },
+    {
+        "name": "Motocross Bike",
+        "fuelDuration": "40s",
+        "purchaseCost": 75000,
+        "upgradeCost": 4634500,
+        "emoji": ":motocross_bike:",
+        "aliases": []
+    },
+    {
+        "name": "Garage",
+        "fuelDuration": "68s (electric zap)",
+        "purchaseCost": 300,
+        "upgradeCost": 0,
+        "emoji": ":garage:",
+        "aliases": ["garage race car", "garage rally car", "garage rc", "grc", "garaj", "garag"]
+    }
+]

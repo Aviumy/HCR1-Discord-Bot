@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Countryside"
+        "purchaseCost": 0,
+        "aliases": ["country", "contry", "contryside"]
+    },
+    {
+        "name": "Seasons",
+        "purchaseCost": 50000,
+        "aliases": ["season"]
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Hill Climber",
+        "purchaseCost": 0,
+        "upgradeCost": 3711000,
+        "emoji": ":hill_climber:",
+        "aliases": ["jeep", "hc"]
+    },
+    {
+        "fuelDuration": "40s",
+        "purchaseCost": 75000,
+        "upgradeCost": 4634500,
+        "emoji": ":motocross_bike:",
+        "aliases": []
+    },
+    {
+		"name": "Garage"
+    },
+    {
+
+    }
+]
