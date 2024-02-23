@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HCR1DiscordBot.Models;
 
 namespace HCR1DiscordBot.Services.ModuleServices
 {
@@ -35,42 +36,52 @@ namespace HCR1DiscordBot.Services.ModuleServices
 
         public string GetVehicleOrStageInfo(string parameter)
         {
-            StringBuilder sb = new StringBuilder();
-
             var vehicles = _jsonReaderService.ReadAllVehicles();
             dynamic item = _infoSearchService.FindIn(vehicles, parameter);
             if (item != null)
             {
-                sb.AppendLine($"{item.Emoji} **{item.Name}**");
-                if (item.Name.ToLower() == "garage")
-                {
-                    sb.AppendLine($"Purchase cost: 300 gems");
-                    sb.AppendLine($"Upgrade cost: Random");
-                    sb.AppendLine($"Total cost (Purchase + Upgrade): Random");
-                }
-                else
-                {
-                    sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
-                    sb.AppendLine($"Upgrade cost: {item.UpgradeCost:n0}");
-                    sb.AppendLine($"Total cost (Purchase + Upgrade): {(item.PurchaseCost + item.UpgradeCost):n0}");
-                }
-                sb.AppendLine($"Fuel Duration: {item.FuelDuration}");
+                return GetVehicleInfo(item as Vehicle);
+            }
+
+            var stages = _jsonReaderService.ReadAllStages();
+            item = _infoSearchService.FindIn(stages, parameter);
+            if (item != null)
+            {
+                return GetStageInfo(item as Stage);
+            }
+
+            return "Couldn't find such vehicle or stage";
+        }
+
+        public string GetVehicleInfo(Vehicle vehicle)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"{vehicle.Emoji} **{vehicle.Name}**");
+            if (vehicle.Name.ToLower() == "garage")
+            {
+                sb.AppendLine($"Purchase cost: 300 gems");
+                sb.AppendLine($"Upgrade cost: Random");
+                sb.AppendLine($"Total cost (Purchase + Upgrade): Random");
             }
             else
             {
-                var stages = _jsonReaderService.ReadAllStages();
-                item = _infoSearchService.FindIn(stages, parameter);
-                if (item != null)
-                {
-                    sb.AppendLine($"**{item.Name}**");
-                    sb.AppendLine($"Purchase cost: {item.PurchaseCost:n0}");
-                    sb.AppendLine($"Fuel locations: coming soon...");
-                }
-                else
-                {
-                    sb.AppendLine("Couldn't find such vehicle or stage");
-                }
+                sb.AppendLine($"Purchase cost: {vehicle.PurchaseCost:n0}");
+                sb.AppendLine($"Upgrade cost: {vehicle.UpgradeCost:n0}");
+                sb.AppendLine($"Total cost (Purchase + Upgrade): {(vehicle.PurchaseCost + vehicle.UpgradeCost):n0}");
             }
+            sb.AppendLine($"Fuel Duration: {vehicle.FuelDuration}");
+
+            return sb.ToString();
+        }
+
+        public string GetStageInfo(Stage stage)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"**{stage.Name}**");
+            sb.AppendLine($"Purchase cost: {stage.PurchaseCost:n0}");
+            sb.AppendLine($"Fuel locations: coming soon...");
 
             return sb.ToString();
         }
