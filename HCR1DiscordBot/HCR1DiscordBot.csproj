@@ -118,6 +118,7 @@
     <Compile Include="Services\JsonReaderService.cs" />
     <Compile Include="Services\ModuleServices\ComboModuleService.cs" />
     <Compile Include="Services\ModuleServices\HelpModuleService.cs" />
+    <Compile Include="Services\ModuleServices\InfoModuleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
