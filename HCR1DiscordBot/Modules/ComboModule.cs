@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Discord.Commands;
-using HCR1DiscordBot.Services;
+using HCR1DiscordBot.Services.ModuleServices;
 
 namespace HCR1DiscordBot.Modules
 {
     public class ComboModule : ModuleBase<SocketCommandContext>
     {
-        private Random _rand = new Random();
-        private JsonReaderService _jsonReader = new JsonReaderService(
+        private ComboModuleService _service = new ComboModuleService(
             vehiclesFilePath: "_vehicles.json",
             stagesFilePath: "_stages.json"
         );
@@ -16,10 +15,9 @@ namespace HCR1DiscordBot.Modules
         [Command("combo")]
         public async Task GenerateComboAsync()
         {
-            var vehicles = _jsonReader.ReadAllVehicles();
-            var stages = _jsonReader.ReadAllStages(excludeMissions: true);
             await Context.Channel.SendMessageAsync(
-                $"Try to drive with {vehicles[_rand.Next(vehicles.Length)].Name} on {stages[_rand.Next(stages.Length)].Name}!"
+                $"Try to drive with {_service.GetRandomVehicle().Name} " +
+                $"on {_service.GetRandomStage(excludeMissions: true).Name}!"
             );
         }
     }
