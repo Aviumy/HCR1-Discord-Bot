@@ -66,7 +66,9 @@ namespace HCR1DiscordBot.Services.ModuleServices
             }
             else
             {
-                sb.AppendLine($"Purchase cost: {vehicle.PurchaseCost:n0}");
+                sb.AppendLine(vehicle.PurchaseCost == 0
+                    ? "Purchase cost: Free"
+                    : $"Purchase cost: {vehicle.PurchaseCost:n0}");
                 sb.AppendLine($"Upgrade cost: {vehicle.UpgradeCost:n0}");
                 sb.AppendLine($"Total cost (Purchase + Upgrade): {(vehicle.PurchaseCost + vehicle.UpgradeCost):n0}");
             }
@@ -80,7 +82,9 @@ namespace HCR1DiscordBot.Services.ModuleServices
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"**{stage.Name}**");
-            sb.AppendLine($"Purchase cost: {stage.PurchaseCost:n0}");
+            sb.AppendLine(stage.PurchaseCost == 0
+                ? "Purchase cost: Free"
+                : $"Purchase cost: {stage.PurchaseCost:n0}");
             sb.AppendLine($"Fuel locations: coming soon...");
 
             return sb.ToString();
