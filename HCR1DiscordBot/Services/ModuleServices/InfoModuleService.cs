@@ -20,6 +20,13 @@ namespace HCR1DiscordBot.Services.ModuleServices
             _infoSearchService = new InfoSearchService();
         }
 
+        public InfoModuleService(int randSeed, string vehiclesFilePath, string stagesFilePath)
+        {
+            _rand = new Random(randSeed);
+            _jsonReaderService = new JsonReaderService(vehiclesFilePath, stagesFilePath);
+            _infoSearchService = new InfoSearchService();
+        }
+
         public dynamic GetRandomVehicleOrStage()
         {
             if (_rand.Next(2) == 0)
