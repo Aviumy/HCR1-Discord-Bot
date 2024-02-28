@@ -53,7 +53,7 @@ namespace HCR1DiscordBot.Services.ModuleServices
             return "Couldn't find such vehicle or stage";
         }
 
-        public string GetVehicleInfo(Vehicle vehicle)
+        private string GetVehicleInfo(Vehicle vehicle)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -77,7 +77,7 @@ namespace HCR1DiscordBot.Services.ModuleServices
             return sb.ToString();
         }
 
-        public string GetStageInfo(Stage stage)
+        private string GetStageInfo(Stage stage)
         {
             StringBuilder sb = new StringBuilder();
 
