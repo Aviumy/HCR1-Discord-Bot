@@ -43,9 +43,9 @@ namespace HCR1DiscordBot.Services
             }
             if (excludeMissions)
             {
-                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "suburbs"));
-                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "retro mission"));
-                stages.Remove(stages.FirstOrDefault(s => s.Name.ToLower() == "space mission"));
+                stages?.Remove(stages?.FirstOrDefault(s => s.Name.ToLower() == "suburbs"));
+                stages?.Remove(stages?.FirstOrDefault(s => s.Name.ToLower() == "retro mission"));
+                stages?.Remove(stages?.FirstOrDefault(s => s.Name.ToLower() == "space mission"));
             }
             return stages.ToArray();
         }
