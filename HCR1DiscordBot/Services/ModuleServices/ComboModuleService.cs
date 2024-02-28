@@ -18,6 +18,12 @@ namespace HCR1DiscordBot.Services.ModuleServices
             _jsonReaderService = new JsonReaderService(vehiclesFilePath, stagesFilePath);
         }
 
+        public ComboModuleService(int randSeed, string vehiclesFilePath, string stagesFilePath)
+        {
+            _rand = new Random(randSeed);
+            _jsonReaderService = new JsonReaderService(vehiclesFilePath, stagesFilePath);
+        }
+
         public Vehicle GetRandomVehicle()
         {
             var vehicles = _jsonReaderService.ReadAllVehicles();
