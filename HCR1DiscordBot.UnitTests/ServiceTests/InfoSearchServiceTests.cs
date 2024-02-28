@@ -95,6 +95,7 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
         }
 
         [Test]
+        [TestCase("")]
         [TestCase("Inexistent car")]
         public void FindIn_VehicleNotFound_ReturnsNull(string parameter)
         {
@@ -218,6 +219,7 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
         }
 
         [Test]
+        [TestCase("")]
         [TestCase("Inexistent stage")]
         public void FindIn_StageNotFound_ReturnsNull(string parameter)
         {

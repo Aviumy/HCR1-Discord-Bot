@@ -1,4 +1,5 @@
-﻿using HCR1DiscordBot.Services;
+﻿using HCR1DiscordBot.Models;
+using HCR1DiscordBot.Services;
 using HCR1DiscordBot.UnitTests.Data;
 
 namespace HCR1DiscordBot.UnitTests.ServiceTests
@@ -82,6 +83,19 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
         }
 
         [Test]
+        [TestCase(@"..\..\..\Data\Empty.json")]
+        public void ReadAllVehicles_EmptyJson_ThrowsNullReferenceException(string path)
+        {
+            var jsonReaderService = new JsonReaderService(
+                vehiclesFilePath: path,
+                stagesFilePath: path
+            );
+
+            Assert.That(() => jsonReaderService.ReadAllVehicles(), 
+                Throws.Exception.TypeOf<NullReferenceException>());
+        }
+
+        [Test]
         [TestCase(@"..\..\..\Data\InvalidSyntax.json")]
         public void ReadAllVehicles_WrongJsonSyntax_ThrowsJsonReaderException(string path)
         {
@@ -118,6 +132,21 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
                 stagesFilePath: path
             );
             var expected = _faker.GetAllExampleVehicles();
+
+            var actual = jsonReaderService.ReadAllVehicles();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase(@"..\..\..\Data\EmptyArray.json")]
+        public void ReadAllVehicles_EmptyJsonList_ReturnsEmptyVehiclesArray(string path)
+        {
+            var jsonReaderService = new JsonReaderService(
+                vehiclesFilePath: path,
+                stagesFilePath: path
+            );
+            var expected = new Vehicle[0];
 
             var actual = jsonReaderService.ReadAllVehicles();
 
@@ -204,6 +233,19 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
         }
 
         [Test]
+        [TestCase(@"..\..\..\Data\Empty.json")]
+        public void ReadAllStages_EmptyJson_ThrowsNullReferenceException(string path)
+        {
+            var jsonReaderService = new JsonReaderService(
+                vehiclesFilePath: path,
+                stagesFilePath: path
+            );
+
+            Assert.That(() => jsonReaderService.ReadAllStages(),
+                Throws.Exception.TypeOf<NullReferenceException>());
+        }
+
+        [Test]
         [TestCase(@"..\..\..\Data\InvalidSyntax.json")]
         public void ReadAllStages_WrongJsonSyntax_ThrowsJsonReaderException(string path)
         {
@@ -240,6 +282,21 @@ namespace HCR1DiscordBot.UnitTests.ServiceTests
                 stagesFilePath: path
             );
             var expected = _faker.GetAllExampleStages();
+
+            var actual = jsonReaderService.ReadAllStages();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase(@"..\..\..\Data\EmptyArray.json")]
+        public void ReadAllStages_EmptyJsonList_ReturnsEmptyVehiclesArray(string path)
+        {
+            var jsonReaderService = new JsonReaderService(
+                vehiclesFilePath: path,
+                stagesFilePath: path
+            );
+            var expected = new Stage[0];
 
             var actual = jsonReaderService.ReadAllStages();
 
