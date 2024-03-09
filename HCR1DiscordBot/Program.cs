@@ -68,6 +68,13 @@ namespace HCR1DiscordBot
         public async Task HandleCommandAsync(SocketMessage msg)
         {
             var message = msg as SocketUserMessage;
+            // We are going to log only commands and bot responses,
+            // so we need to explicitly exclude messages
+            // that start with bold formatting, since it starts with * too
+            if (!message.Author.IsBot && 
+                (!message.ToString().StartsWith("*") || message.ToString().StartsWith("**")))
+                return;
+
             var context = new SocketCommandContext(_client, message);
             var channel = _client.GetChannel(_logChannelID) as SocketTextChannel;
 
@@ -78,10 +85,7 @@ namespace HCR1DiscordBot
                 messageText.AppendLine(string.Join("\n", message.Embeds.Select(e => e.Description)));
             }
 
-            Console.WriteLine("-------------\nUser: " 
-                + message.Author.Username + " with ID  " + message.Author.Id 
-                + "\nWrote:\n" + messageText.ToString() + "\nin channel "
-                + $"{message.Channel.Name} (id: {message.Channel.Id})");
+            Console.WriteLine($"------------------------\n[{DateTime.Now}]\n{messageText}");
 
             if (message.Author.IsBot)
                 return;
