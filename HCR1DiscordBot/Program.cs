@@ -46,7 +46,7 @@ namespace HCR1DiscordBot
 
             await RegisterCommandsAsync();
 
-            string token = File.ReadAllText("token.txt");
+            string token = Environment.GetEnvironmentVariable("DISCORD_BOT_TOKEN");
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 
