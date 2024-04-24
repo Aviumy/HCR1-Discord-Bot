@@ -79,7 +79,7 @@ namespace HCR1DiscordBot.Services.ModuleServices
                 sb.AppendLine($"Upgrade cost: {vehicle.UpgradeCost:n0}");
                 sb.AppendLine($"Total cost (Purchase + Upgrade): {(vehicle.PurchaseCost + vehicle.UpgradeCost):n0}");
             }
-            sb.AppendLine($"Fuel Duration: {vehicle.FuelDuration}");
+            sb.AppendLine($"Fuel duration: {vehicle.FuelDuration}");
 
             return sb.ToString();
         }

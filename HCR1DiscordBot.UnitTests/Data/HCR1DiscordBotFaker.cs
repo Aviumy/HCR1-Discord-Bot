@@ -172,7 +172,7 @@ namespace HCR1DiscordBot.UnitTests.Data
         {
             return new string[]
             {
-                ":hill_climber: **Hill Climber**\r\nPurchase cost: Free\r\nUpgrade cost: 3,711,000\r\nTotal cost (Purchase + Upgrade): 3,711,000\r\nFuel Duration: 40s\r\n",
+                ":hill_climber: **Hill Climber**\r\nPurchase cost: Free\r\nUpgrade cost: 3,711,000\r\nTotal cost (Purchase + Upgrade): 3,711,000\r\nFuel duration: 40s\r\n",
                 "**Countryside**\r\nPurchase cost: Free\r\nFuel locations: coming soon...\r\n",
             };
         }
